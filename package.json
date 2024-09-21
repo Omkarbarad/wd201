@@ -6,20 +6,22 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "cd .. && husky install todo-cli/.husky"
   },
-  "author": "",
+  "author": "omkar <omkarbarad46@gmail.com>",
   "license": "ISC",
-  "description": "",
   "devDependencies": {
-    "@eslint/js": "^9.10.0",
-    "eslint": "^9.10.0",
+    "@eslint/js": "^9.11.0",
+    "eslint": "^9.11.0",
     "eslint-plugin-react": "^7.36.1",
     "globals": "^15.9.0",
-    "husky": "^9.1.6"
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3"
   },
   "dependencies": {
     "minimist": "^1.2.8"
   },
   "script": {
     "prepare": "cd..&&husky install todo-cli/.husky"
-  }
+  },
+  "description": ""
 }
