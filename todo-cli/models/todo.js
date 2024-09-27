@@ -74,7 +74,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     
       // Case: Completed task overdue, show the due date
-      if (this.dueDate < today && !this.completed) {
+      if (this.dueDate < today) {
         return `${this.id}. ${checkbox} ${this.title} ${this.dueDate}`;
       }
     
