@@ -59,28 +59,34 @@ module.exports = (sequelize, DataTypes) => {
         await task.save();
       }
     }
-    displayableString() {
-      const today = new Date().toISOString().split('T')[0];
-      const checkbox = this.completed ? "[x]" : "[ ]";
-    
-      // Case: Completed task due today, hide the date
-      if (this.dueDate === today && this.completed) {
-        return `${this.id}. ${checkbox} ${this.title}`;
-      }
-    
-      // Case: Incomplete task due today, hide the date
-      if (this.dueDate === today && !this.completed) {
-        return `${this.id}. ${checkbox} ${this.title}`;
-      }
-    
-      // Case: Completed task overdue, show the due date
-      if (this.dueDate < today) {
-        return `${this.id}. ${checkbox} ${this.title} ${this.dueDate}`;
-      }
-    
-      // Default case: Future tasks (completed or not) show due date
-      return `${this.id}. ${checkbox} ${this.title} ${this.dueDate}`;
-    }
+   displayableString() {
+  const today = new Date().toISOString().split('T')[0];
+  const checkbox = this.completed ? "[x]" : "[ ]";
+
+  // Case: Completed task due today, hide the date
+  if (this.dueDate === today && this.completed) {
+    return `${this.id}. ${checkbox} ${this.title}`;
+  }
+
+  // Case: Incomplete task due today, hide the date
+  if (this.dueDate === today && !this.completed) {
+    return `${this.id}. ${checkbox} ${this.title}`;
+  }
+
+  // Case: Completed task overdue, show the due date
+  if (this.dueDate < today && this.completed) {
+    return `${this.id}. ${checkbox} ${this.title} ${this.dueDate}`;
+  }
+
+  // Case: Incomplete task overdue, show the due date
+  if (this.dueDate < today && !this.completed) {
+    return `${this.id}. ${checkbox} ${this.title} ${this.dueDate}`;
+  }
+
+  // Default case: Future tasks (completed or not) show due date
+  return `${this.id}. ${checkbox} ${this.title} ${this.dueDate}`;
+}
+
     
     
   }
